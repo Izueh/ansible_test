@@ -1,0 +1,21 @@
+---
+
+- name: Install nginx
+    apt:
+        name: nginx
+        update_cache: yes
+
+- name: Install git
+    apt:
+        name: git
+        update_cache: yes
+
+- name: clone repo
+    git: 
+        repo: http://github.com/izueh/ansible_test.git
+        dest: /usr/share/nginx/html
+
+- name: Start Nginx
+    service: 
+        name: nginx
+        state: started
